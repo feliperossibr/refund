@@ -31,6 +31,18 @@
   --text-label: 400 .625rem/.875rem var(--ff-base);
 }
 
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--gray-400);
+}
+
 body {
   width: 100%;
   height: 100vh;
@@ -42,4 +54,281 @@ body {
   align-items: center;
 
   color: var(--gray-100);
+}
+
+.logo {
+  margin: 3rem 0 2rem;
+}
+
+main section {
+  display: flex;
+  flex: 1;
+  gap: 1.25rem;
+  padding-bottom: 2rem;
+}
+
+form {
+  background-color: var(--gray-500);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  max-width: 462px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+form h1 {
+  font: var(--head-lg);
+  color: var(--gray-100);
+}
+
+form p {
+  font: var(--body-md);
+  color: var(--gray-200);
+  margin: .75rem 0 2.5rem;
+}
+
+fieldset {
+  border: none;
+  display: flex;
+}
+
+fieldset legend {
+  text-transform: uppercase;
+  font: var(--text-label);
+  color: var(--gray-200);
+  margin-bottom: .5rem;
+}
+
+fieldset:focus-within legend {
+  color: var(--color-green100);
+  font-weight: 700;
+}
+
+input, select {
+  flex: 1;
+  height: 3rem;
+  border-radius: .5rem;
+  border: 1px solid var(--gray-300);
+  padding: 0 1rem;
+  font: var(--body-md);
+  color: var(--gray-100);
+  background-color: transparent;
+  outline: none;
+}
+
+select {
+  appearance: none;
+  background: url(../img/chevron-down.svg) no-repeat;
+  background-position: right .7rem top 50%;
+  background-size: 1.25rem auto;
+}
+
+input::placeholder,
+select:invalid {
+  color: var(--gray-200);
+}
+
+input:focus,
+select:focus {
+  border: 1.5px solid var(--color-green100);
+}
+
+.inputs-row {
+  display: flex;
+  flex: 1;
+
+  gap: 1rem;
+  margin-top: 1rem;
+
+  & > fieldset:first-child {
+    flex: 1;
+  }
+
+  & > fieldset:last-child input {
+    max-width: 154px;
+  }
+}
+
+form button {
+  height: 3rem;
+  border-radius: .5rem;
+  border: none;
+
+  font: var(--body-md);
+  color: #ffffff;
+  background-color: var(--color-green100);
+  font-weight: 700;
+
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: background-color .2s;
+}
+
+button:hover {
+  background-color: var(--color-green200);
+}
+
+form button:last-child {
+  margin-top: 2rem;
+}
+
+aside {
+  background-color: var(--gray-500);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  max-width: 462px;
+  min-width: 600px;
+  
+  & > header {
+    display: flex;
+    justify-content: space-between;
+  
+    border-bottom: 1px solid var(--gray-400);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+
+    & > p {
+      color: var(--gray-200);
+      font: var(--body-lg);
+
+      & > span {
+        color: var(--gray-200);
+        font-weight: 400;
+        font-size: .77rem;
+        text-transform: uppercase;
+      }
+
+      & > i {
+        color: var(--gray-300);
+        margin: 0 .5rem;
+        font-style: normal;
+      }
+    }
+
+    & > h2 {
+      font: var(--head-md);
+      color: var(--gray-100);
+      
+      & > small {
+        color: var(--gray-200);
+        font: var(--body-sm);
+        margin-right: .25rem;
+      }
+    }
+  }
+
+  & > ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    max-height: 310px;
+    min-height: 310px;
+
+    overflow-y: scroll;
+  }
+}
+
+.expense {
+  display: flex;
+  align-items: center;
+  height: 38px;
+}
+
+.expense img:first-child {
+  width: 2rem;
+  height: 2rem;
+
+  margin-right: 0.75rem;
+}
+
+.expense > div {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.expense-info strong {
+  font: var(--head-sm);
+  color: var(--gray-100);
+}
+
+.expense-info span {
+  font: var(--body-sm);
+  color: var(--gray-200);
+}
+
+.expense-amount {
+  font: var(--sub-head);
+  color: var(--gray-100);
+}
+
+.expense-amount small {
+  font: var(--body-sm);
+  color: var(--gray-200);
+  margin-right: 0.25rem;
+}
+
+.remove-icon {
+  height: 1rem;
+  margin-left: 0.5rem;
+
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.remove-icon:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 1100px) {
+  form {
+    max-height: 428px;
+  }
+}
+
+@media (max-width: 1100px) {
+  :root {
+    font-size: 14px;
+  }
+
+  main,
+  aside {
+    min-width: 100%;
+  }
+
+  main section {
+    flex-direction: column;
+    width: 100%;
+
+    padding: 1.5rem;
+  }
+
+  main section form {
+    min-width: 100%;
+  }
+
+  main section aside ul {
+    width: 100%;
+    height: auto;
+    overflow: auto;
+  }
+}
+
+@media (max-width: 620px) {
+  .inputs-row {
+    flex-direction: column;
+  }
+
+  .inputs-row fieldset:last-child input {
+    max-width: auto;
+    min-width: 100%;
+  }
+
+  aside header {
+    flex-direction: column;
+    align-items: center;
+  }
 }
